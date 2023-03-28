@@ -6,7 +6,10 @@ let weather = {
         "&units=metric&appid=" +
         config.apikey
     )
-      .then((response) => response.json())
+      .then((response) => {
+        if(response.ok) return response.json(); 
+        else throw new Error("Status code error :" + response.status)
+    })
       .then((data) => this.displayWeather(data))
       .catch(error => console.log(error));
   },
