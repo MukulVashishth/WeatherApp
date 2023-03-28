@@ -7,7 +7,8 @@ let weather = {
         config.apikey
     )
       .then((response) => response.json())
-      .then((data) => this.displayWeather(data));
+      .then((data) => this.displayWeather(data))
+      .catch(error => console.log(error));
   },
 
   displayWeather: function (data) {
